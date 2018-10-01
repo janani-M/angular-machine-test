@@ -1,0 +1,104 @@
+<html>
+    <head>
+        <style>
+          body {
+			  padding: 20px 0;
+			  font-family: Lato, sans-serif;
+			}
+        </style>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<script>
+		 
+		 var name = $("#name").val();
+		var country = $("#country").val();
+		var comments = $("#comments").val();
+		var gender= $("#gender").val();
+		$.ajax({
+		  type: "POST",
+		  url: "php/form-process.php",
+		  data: "name=" + name + "&email=" + email + "&comments=" + comments"&country=" + country +"&gender=" + gender ,
+		  success : function(text){
+			  if (text == "success"){
+				  formSuccess();
+			  } else {
+				  formError();
+				  submitMSG(false,text);
+			  }
+		  }
+	  });
+		</script>
+    </head>
+    <body>
+
+  <div class="container">
+
+    <div class="row">
+
+      <div class="col-lg-8 col-lg-offset-2">
+
+        <h1>Submit the form through ajax call</h1>
+		<form id="contact-form" method="post" action="contact.php" role="form">
+
+        <div class="messages"></div>
+
+        <div class="controls">
+
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label for="form_name">Name </label>
+                <input id="form_name" type="text" name="name" id="name" class="form-control" placeholder="Name" required="required" data-error="Firstname is required.">
+                <div class="help-block with-errors"></div>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="form-group">
+                <label for="form_lastname">Gender </label><br>
+               <input type="radio" name="gender" value="male" id="gender" required="required"> Male<br>
+				<input type="radio" name="gender" value="female" id="gender" required="required"> Female<br>
+				 
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label for="form_email">Country </label>
+               <select name="country" form="country" id="country" required="required">
+				  <option value="India">India</option>
+				  <option value="America">America</option>
+				  <option value="Europe">Europe</option>
+				  
+				</select>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="form-group">
+                <label for="form_message" id="comments">Comments </label>
+                <textarea id="form_message" name="message" class="form-control" placeholder="Message for me *" rows="4" required="required" data-error="Please,leave us a message."></textarea>
+                <div class="help-block with-errors"></div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+             
+            </div>
+            <div class="col-md-12">
+              <input type="submit" class="btn btn-success btn-send" value="Send message">
+            </div>
+          </div>
+          
+        </div>
+
+        </form>
+
+      </div>
+
+    </div>
+
+  </div>
+</body>
+</html>
