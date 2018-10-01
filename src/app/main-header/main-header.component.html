@@ -1,0 +1,5 @@
+<section id="clsmainmenu">
+     <ul class="report_ul" >
+        <li *ngFor="let menu_item of navigation_link; let i = index"   class="routerLink"><a (click)="enableSelected(i)" [routerLink]=[menu_item.link_url] class="btn btn-link">{{menu_item.title}}</a></li>
+    </ul>
+</section>

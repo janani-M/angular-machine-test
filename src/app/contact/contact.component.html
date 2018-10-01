@@ -1,0 +1,15 @@
+<app-main-header></app-main-header>
+<div class="col-md-6">
+    <br>
+        Name:  <input type="text" name="name"  minLength="2"   maxLength="10" placeholder="Name"  onkeypress="return String.fromCharCode(event.charCode).match(/^[A-Za-z]/g) != null" [(ngModel)]="name" ><br><br>
+        Email: <input type="text" name="email" placeholder="Email" [(ngModel)]="mail" >
+        <br><br>
+        <input type="submit" name="submit" (click)="onSubmit()">
+
+</div>
+<div class="col-md-6" *ngIf="display_box">
+        <br>
+        Name: {{name_temp}}
+        <br><br>
+        Email: {{mail_temp}}
+</div>
